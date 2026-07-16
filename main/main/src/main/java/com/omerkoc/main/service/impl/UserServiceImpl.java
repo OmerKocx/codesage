@@ -130,9 +130,9 @@ public class UserServiceImpl implements IUserService {
                     url,
                     HttpMethod.GET,
                     entity,
-                    List.class
-            );
-            if (response.getStatusCode() == HttpStatus.OK && response.getBody() != null && !response.getBody().isEmpty()) {
+                    List.class);
+            if (response.getStatusCode() == HttpStatus.OK && response.getBody() != null
+                    && !response.getBody().isEmpty()) {
                 Map<String, Object> user = (Map<String, Object>) response.getBody().get(0);
                 return (String) user.get("id");
             }
