@@ -1,21 +1,22 @@
 package com.omerkoc.main.service;
 
-import com.omerkoc.main.model.Analysis;
+import com.omerkoc.main.dto.AnalysisRequest;
+import com.omerkoc.main.dto.AnalysisResponse;
 import java.util.List;
 import java.util.UUID;
 
 public interface IAnalysisService {
 
-    Analysis create(Analysis analysis);
+    AnalysisResponse create(AnalysisRequest request);
 
-    Analysis getById(UUID id);
+    AnalysisResponse getById(UUID id);
 
-    List<Analysis> getAll();
+    List<AnalysisResponse> getAll();
 
     void delete(UUID id);
 
-    List<Analysis> getByRepoUrl(String repoUrl);
+    List<AnalysisResponse> getByRepoUrl(String repoUrl);
 
-    List<Analysis> getByStatus(String status);
+    List<AnalysisResponse> getByStatus(String status);
 
 }

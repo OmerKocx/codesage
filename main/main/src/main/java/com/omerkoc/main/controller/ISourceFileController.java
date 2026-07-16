@@ -1,22 +1,24 @@
 package com.omerkoc.main.controller;
 
-import com.omerkoc.main.model.SourceFile;
+import jakarta.validation.Valid;
+import com.omerkoc.main.dto.SourceFileRequest;
+import com.omerkoc.main.dto.SourceFileResponse;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.UUID;
 
 public interface ISourceFileController {
 
-    ResponseEntity<SourceFile> create(SourceFile sourceFile);
+    ResponseEntity<SourceFileResponse> create(@Valid SourceFileRequest request);
 
-    ResponseEntity<SourceFile> getById(UUID id);
+    ResponseEntity<SourceFileResponse> getById(UUID id);
 
-    ResponseEntity<List<SourceFile>> getAll();
+    ResponseEntity<List<SourceFileResponse>> getAll();
 
     ResponseEntity<Void> delete(UUID id);
 
-    ResponseEntity<List<SourceFile>> getByAnalysisId(UUID analysisId);
+    ResponseEntity<List<SourceFileResponse>> getByAnalysisId(UUID analysisId);
 
-    ResponseEntity<List<SourceFile>> getByPackageName(String packageName);
+    ResponseEntity<List<SourceFileResponse>> getByPackageName(String packageName);
 
 }

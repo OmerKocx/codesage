@@ -1,25 +1,26 @@
 package com.omerkoc.main.service;
 
-import com.omerkoc.main.model.Issue;
+import com.omerkoc.main.dto.IssueRequest;
+import com.omerkoc.main.dto.IssueResponse;
 import java.util.List;
 import java.util.UUID;
 
 public interface IIssueService {
 
-    Issue create(Issue issue);
+    IssueResponse create(IssueRequest request);
 
-    Issue getById(UUID id);
+    IssueResponse getById(UUID id);
 
-    List<Issue> getAll();
+    List<IssueResponse> getAll();
 
     void delete(UUID id);
 
-    List<Issue> getByAnalysisId(UUID analysisId);
+    List<IssueResponse> getByAnalysisId(UUID analysisId);
 
-    List<Issue> getBySourceFileId(UUID sourceFileId);
+    List<IssueResponse> getBySourceFileId(UUID sourceFileId);
 
-    List<Issue> getBySeverity(String severity);
+    List<IssueResponse> getBySeverity(String severity);
 
-    List<Issue> getByCategory(String category);
+    List<IssueResponse> getByCategory(String category);
 
 }

@@ -1,21 +1,22 @@
 package com.omerkoc.main.service;
 
-import com.omerkoc.main.model.SourceFile;
+import com.omerkoc.main.dto.SourceFileRequest;
+import com.omerkoc.main.dto.SourceFileResponse;
 import java.util.List;
 import java.util.UUID;
 
 public interface ISourceFileService {
 
-    SourceFile create(SourceFile sourceFile);
+    SourceFileResponse create(SourceFileRequest request);
 
-    SourceFile getById(UUID id);
+    SourceFileResponse getById(UUID id);
 
-    List<SourceFile> getAll();
+    List<SourceFileResponse> getAll();
 
     void delete(UUID id);
 
-    List<SourceFile> getByAnalysisId(UUID analysisId);
+    List<SourceFileResponse> getByAnalysisId(UUID analysisId);
 
-    List<SourceFile> getByPackageName(String packageName);
+    List<SourceFileResponse> getByPackageName(String packageName);
 
 }

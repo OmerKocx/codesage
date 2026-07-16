@@ -1,5 +1,6 @@
 package com.omerkoc.main.controller;
 
+import jakarta.validation.Valid;
 import com.omerkoc.main.dto.LoginResponse;
 import com.omerkoc.main.dto.UserDto;
 import com.omerkoc.main.dto.UserLoginRequest;
@@ -8,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 
 public interface IUserController {
 
-    ResponseEntity<UserDto> register(UserRegisterRequest request);
+    ResponseEntity<UserDto> register(@Valid UserRegisterRequest request);
 
-    ResponseEntity<LoginResponse> login(UserLoginRequest request);
+    ResponseEntity<LoginResponse> login(@Valid UserLoginRequest request);
 
 }

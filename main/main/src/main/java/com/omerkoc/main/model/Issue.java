@@ -3,6 +3,8 @@ package com.omerkoc.main.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Entity
@@ -18,6 +20,7 @@ public class Issue {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @NotNull(message = "Analysis cannot be null")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "analysis_id", nullable = false)
     private Analysis analysis;
@@ -26,6 +29,7 @@ public class Issue {
     @JoinColumn(name = "source_file_id")
     private SourceFile sourceFile;
 
+    @NotBlank(message = "Severity cannot be blank")
     @Column(name = "severity", length = 50, nullable = false)
     private String severity;
 
@@ -35,6 +39,7 @@ public class Issue {
     @Column(name = "line_number")
     private Integer lineNumber;
 
+    @NotBlank(message = "Title cannot be blank")
     @Column(name = "title", length = 500, nullable = false)
     private String title;
 

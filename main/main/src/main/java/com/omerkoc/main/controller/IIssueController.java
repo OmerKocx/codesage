@@ -1,26 +1,28 @@
 package com.omerkoc.main.controller;
 
-import com.omerkoc.main.model.Issue;
+import jakarta.validation.Valid;
+import com.omerkoc.main.dto.IssueRequest;
+import com.omerkoc.main.dto.IssueResponse;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.UUID;
 
 public interface IIssueController {
 
-    ResponseEntity<Issue> create(Issue issue);
+    ResponseEntity<IssueResponse> create(@Valid IssueRequest request);
 
-    ResponseEntity<Issue> getById(UUID id);
+    ResponseEntity<IssueResponse> getById(UUID id);
 
-    ResponseEntity<List<Issue>> getAll();
+    ResponseEntity<List<IssueResponse>> getAll();
 
     ResponseEntity<Void> delete(UUID id);
 
-    ResponseEntity<List<Issue>> getByAnalysisId(UUID analysisId);
+    ResponseEntity<List<IssueResponse>> getByAnalysisId(UUID analysisId);
 
-    ResponseEntity<List<Issue>> getBySourceFileId(UUID sourceFileId);
+    ResponseEntity<List<IssueResponse>> getBySourceFileId(UUID sourceFileId);
 
-    ResponseEntity<List<Issue>> getBySeverity(String severity);
+    ResponseEntity<List<IssueResponse>> getBySeverity(String severity);
 
-    ResponseEntity<List<Issue>> getByCategory(String category);
+    ResponseEntity<List<IssueResponse>> getByCategory(String category);
 
 }

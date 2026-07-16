@@ -31,8 +31,8 @@ server:
   port: 8080
 
 keycloak:
-  server-url: ${KEYCLOAK_SERVER_URL}
-  realm: ${KEYCLOAK_REALM}
-  client-id: ${KEYCLOAK_CLIENT_ID}
-  admin-username: ${KEYCLOAK_ADMIN}
-  admin-password: ${KEYCLOAK_ADMIN_PASSWORD}
+  server-url: ${KEYCLOAK_SERVER_URL:http://localhost:8081}
+  realm: ${KEYCLOAK_REALM:codesage}
+  client-id: ${KEYCLOAK_CLIENT_ID:codesage-client}
+  admin-username: ${KEYCLOAK_ADMIN:admin}
+  admin-password: ${KEYCLOAK_ADMIN_PASSWORD:admin}

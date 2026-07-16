@@ -1,22 +1,24 @@
 package com.omerkoc.main.controller;
 
-import com.omerkoc.main.model.Analysis;
+import jakarta.validation.Valid;
+import com.omerkoc.main.dto.AnalysisRequest;
+import com.omerkoc.main.dto.AnalysisResponse;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.UUID;
 
 public interface IAnalysisController {
 
-    ResponseEntity<Analysis> create(Analysis analysis);
+    ResponseEntity<AnalysisResponse> create(@Valid AnalysisRequest request);
 
-    ResponseEntity<Analysis> getById(UUID id);
+    ResponseEntity<AnalysisResponse> getById(UUID id);
 
-    ResponseEntity<List<Analysis>> getAll();
+    ResponseEntity<List<AnalysisResponse>> getAll();
 
     ResponseEntity<Void> delete(UUID id);
 
-    ResponseEntity<List<Analysis>> getByRepoUrl(String repoUrl);
+    ResponseEntity<List<AnalysisResponse>> getByRepoUrl(String repoUrl);
 
-    ResponseEntity<List<Analysis>> getByStatus(String status);
+    ResponseEntity<List<AnalysisResponse>> getByStatus(String status);
 
 }
