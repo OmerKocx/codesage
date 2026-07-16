@@ -28,3 +28,11 @@ CREATE TABLE issue (
     CONSTRAINT fk_issue_analysis FOREIGN KEY (analysis_id) REFERENCES analysis(id) ON DELETE CASCADE,
     CONSTRAINT fk_issue_source_file FOREIGN KEY (source_file_id) REFERENCES source_file(id) ON DELETE SET NULL
 );
+
+CREATE TABLE users (
+    id UUID PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL
+);
