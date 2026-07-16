@@ -13,24 +13,26 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity // Enables annotation-based security check like @PreAuthorize
 public class SecurityConfig {
 
-    private static final String[] SWAGGER_WHITELIST = {
-            "/v3/api-docs/**",
-            "/swagger-ui/**",
-            "/swagger-ui.html",
-            "/auth/register",
-            "/auth/login"
-    };
+        private static final String[] SWAGGER_WHITELIST = {
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**",
+                        "/swagger-ui.html",
+                        "/auth/register",
+                        "/auth/login",
+                        "/auth/logout"
+        };
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(SWAGGER_WHITELIST).permitAll()
-                        .anyRequest().authenticated())
-                .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt.jwtAuthenticationConverter(new KeyCloakRoleConverter())));
+        @Bean
+        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+                http
+                                .csrf(AbstractHttpConfigurer::disable)
+                                .authorizeHttpRequests(authorize -> authorize
+                                                .requestMatchers(SWAGGER_WHITELIST).permitAll()
+                                                .anyRequest().authenticated())
+                                .oauth2ResourceServer(oauth2 -> oauth2
+                                                .jwt(jwt -> jwt.jwtAuthenticationConverter(
+                                                                new KeyCloakRoleConverter())));
 
-        return http.build();
-    }
+                return http.build();
+        }
 }

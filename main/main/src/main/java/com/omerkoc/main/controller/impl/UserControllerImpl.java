@@ -9,6 +9,7 @@ import com.omerkoc.main.controller.IUserController;
 import com.omerkoc.main.dto.LoginResponse;
 import com.omerkoc.main.dto.UserDto;
 import com.omerkoc.main.dto.UserLoginRequest;
+import com.omerkoc.main.dto.UserLogoutRequest;
 import com.omerkoc.main.dto.UserRegisterRequest;
 import com.omerkoc.main.service.IUserService;
 
@@ -36,6 +37,13 @@ public class UserControllerImpl implements IUserController {
     @Override
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody UserLoginRequest request) {
         return ResponseEntity.ok(userService.login(request));
+    }
+
+    @PostMapping("/logout")
+    @Override
+    public ResponseEntity<Void> logout(@Valid @RequestBody UserLogoutRequest request) {
+        userService.logout(request);
+        return ResponseEntity.ok().build();
     }
 
 }

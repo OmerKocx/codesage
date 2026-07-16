@@ -1,6 +1,8 @@
 package com.omerkoc.main.handler;
 
 import com.omerkoc.main.exceptions.BaseException;
+import com.omerkoc.main.exceptions.InvalidCredentialsException;
+import com.omerkoc.main.exceptions.KeycloakAccessException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,32 @@ import java.util.Map;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidCredentialsException(InvalidCredentialsException ex, HttpServletRequest request) {
+        log.error("Invalid Credentials Exception: {} - Path: {}", ex.getMessage(), request.getRequestURI());
+        ErrorResponse response = ErrorResponse.builder()
+                .timestamp(Instant.now())
+                .status(ex.getStatus().value())
+                .error(ex.getStatus().getReasonPhrase())
+                .message(ex.getMessage())
+                .path(request.getRequestURI())
+                .build();
+        return new ResponseEntity<>(response, ex.getStatus());
+    }
+
+    @ExceptionHandler(KeycloakAccessException.class)
+    public ResponseEntity<ErrorResponse> handleKeycloakAccessException(KeycloakAccessException ex, HttpServletRequest request) {
+        log.error("Keycloak Access Exception: {} - Path: {}", ex.getMessage(), request.getRequestURI());
+        ErrorResponse response = ErrorResponse.builder()
+                .timestamp(Instant.now())
+                .status(ex.getStatus().value())
+                .error(ex.getStatus().getReasonPhrase())
+                .message(ex.getMessage())
+                .path(request.getRequestURI())
+                .build();
+        return new ResponseEntity<>(response, ex.getStatus());
+    }
 
     @ExceptionHandler(BaseException.class)
     public ResponseEntity<ErrorResponse> handleBaseException(BaseException ex, HttpServletRequest request) {

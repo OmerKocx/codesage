@@ -55,7 +55,7 @@ public class AnalysisControllerImpl implements IAnalysisController {
 
     @GetMapping("/status/{status}")
     @Override
-    public ResponseEntity<List<AnalysisResponse>> getByStatus(@PathVariable String status) {
+    public ResponseEntity<List<AnalysisResponse>> getByStatus(@Valid @PathVariable String status) {
         return ResponseEntity.ok(analysisService.getByStatus(status));
     }
 
