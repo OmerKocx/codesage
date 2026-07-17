@@ -58,8 +58,7 @@ public class DtoMapper {
                         return null;
                 return Analysis.builder()
                                 .repoUrl(request.repoUrl())
-                                .status(request.status())
-                                .overallScore(request.overallScore())
+                                .status("PROCESSING")
                                 .build();
         }
 }
