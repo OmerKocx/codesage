@@ -15,10 +15,10 @@ import java.util.List;
 @Slf4j
 public class GeminiServiceImpl implements IGeminiService {
 
-    @Value("${GEMINI_API_KEY}")
+    @Value("${GEMINI_API_KEY:dummy}")
     private String apiKey;
 
-    @Value("${API_URL}")
+    @Value("${API_URL:https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent}")
     private String apiUrl;
 
     private final WebClient webClient;
