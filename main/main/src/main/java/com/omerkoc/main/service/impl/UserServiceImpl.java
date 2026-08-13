@@ -46,6 +46,9 @@ public class UserServiceImpl implements IUserService {
     @Value("${keycloak.client-id}")
     private String clientId; // Keycloak üzerindeki uygulamanın Client ID'si
 
+    @Value("${keycloak.client-secret}")
+    private String clientSecret; // Keycloak Client Secret key
+
     @Value("${keycloak.admin-username}")
     private String adminUsername; // Keycloak admin yetkisine sahip kullanıcı adı
 
@@ -206,6 +209,7 @@ public class UserServiceImpl implements IUserService {
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("grant_type", "password");
         map.add("client_id", clientId);
+        map.add("client_secret", clientSecret);
         map.add("username", request.getUsername());
         map.add("password", request.getPassword());
 
